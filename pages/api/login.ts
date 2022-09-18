@@ -5,7 +5,7 @@ type Data = {
   name: string
 }
 
-const redis = new Redis();
+const redis = new Redis(9001);
 
 export default function handler(
   req: NextApiRequest,
