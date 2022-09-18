@@ -12,9 +12,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   const { email, password } = req.body;
 
   const existing = await redis.hget(`user:${email}`, 'users');
-  if (existing === password) {
-    return res.send({});
-  } else {
-    return res.status(500).json({ error: 'Password or Username is not valid' })
+  if (existing) {
+    return res.status(500).json({ error: 'User already exists' });
   }
+  await redis.hset(`user:${email}`, 'users', password);
+
+  res.send({});
 }

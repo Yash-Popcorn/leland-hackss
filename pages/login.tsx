@@ -28,7 +28,7 @@ export const Login: NextPage = () => {
                 Email
             </Text>
         </Card.Header>
-        <Input placeholder="Enter email..." css={{ color: "$blue300" }}
+        <Input placeholder="Enter username..." css={{ color: "$blue300" }}
             onChange={(text) => {
                 setUsername(text.target.value)
             }}
@@ -47,7 +47,7 @@ export const Login: NextPage = () => {
         </Input.Password>
         <Card.Header>
         <Button shadow css={{marginBottom: "60px"}}
-            onClick={() => {
+            onPress={() => {
                 console.log(password, username)
                 
             }}

@@ -14,11 +14,7 @@ export const Register: NextPage = () => {
         <Card.Header>
         <img
           alt="nextui logo"
-<<<<<<< HEAD
           src="/logo.png"
-=======
-          src="https://cdn.discordapp.com/attachments/859660582281936916/1021158764931453028/unknown.png"
->>>>>>> 80c191603457b8fc4e49332bca58b60965e3b36a
           width="34px"
           height="24px"
         />
@@ -32,7 +28,7 @@ export const Register: NextPage = () => {
                 Email
             </Text>
         </Card.Header>
-        <Input placeholder="Enter email..." css={{ color: "$blue300" }}
+        <Input placeholder="Enter username..." css={{ color: "$blue300" }}
             onChange={(text) => {
                 setUsername(text.target.value)
             }}
@@ -62,18 +58,48 @@ export const Register: NextPage = () => {
         </Input.Password>
         <Card.Header>
         <Button shadow css={{marginBottom: "60px"}}
-            onClick={() => {
+            onPress={async () => {
                 console.log(password, confirm_password, username)
+                if (password !== confirm_password) alert("Password and Confirm Password are not the same!")
+
+                try {
+                    const result = await fetch('/api/register', {
+                        method: "POST",
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            email: username,
+                            password: password
+                        })
+                    })
+                    const json_data = await result.json()
+                    const value: {error: string} = await json_data
+
+                    if (value.error) {
+                        alert(value.error)
+                    }
+                } catch (err) {
+                    alert(err)
+                }
+                
+                /*
                 fetch('/api/register', {
-                    method: "GET",
+                    method: "POST",
                     headers: {
                         'Content-Type': 'application/json'
-                    }
+                    },
+                    body: JSON.stringify({
+                        email: username,
+                        password: password
+                    })
                 }).then(result => {
                     return result.json()
-                }).then(json => {
-
                 })
+                .then(json => {
+                    
+                })
+                */
             }}
         >
             Sign Up
