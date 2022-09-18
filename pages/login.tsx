@@ -1,5 +1,6 @@
 import { Button, Card, Input, Text } from "@nextui-org/react";
 import { NextPage } from "next";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import HomeStyles from '../styles/Home.module.css'
 
@@ -7,6 +8,7 @@ export const Login: NextPage = () => {
 
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    const router = useRouter()
     //const [confirm_password, setConfirmPassword] = useState("")
 
     return <div className={`${HomeStyles['center']}`}>
@@ -25,7 +27,7 @@ export const Login: NextPage = () => {
         <Card.Divider/>
         <Card.Header>
             <Text b>
-                Email
+                Username
             </Text>
         </Card.Header>
         <Input placeholder="Enter username..." css={{ color: "$blue300" }}
@@ -47,9 +49,30 @@ export const Login: NextPage = () => {
         </Input.Password>
         <Card.Header>
         <Button shadow css={{marginBottom: "60px"}}
-            onPress={() => {
+            onPress={async () => {
                 console.log(password, username)
-                
+                try {
+                    const result = await fetch('/api/login', {
+                        method: "POST",
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            email: username,
+                            password: password
+                        })
+                    })
+                    const json_data = await result.json()
+                    const value: {error: string} = await json_data
+
+                    if (value.error) {
+                        alert(value.error)
+                    } else {
+                        router.push('/dashboard')
+                    }
+                } catch (err) {
+                    alert(err)
+                }
             }}
         >
             Login

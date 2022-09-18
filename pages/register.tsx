@@ -1,5 +1,6 @@
 import { Button, Card, Input, Text } from "@nextui-org/react";
 import { NextPage } from "next";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import HomeStyles from '../styles/Home.module.css'
 
@@ -8,6 +9,8 @@ export const Register: NextPage = () => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [confirm_password, setConfirmPassword] = useState("")
+
+    const router = useRouter()
 
     return <div className={`${HomeStyles['center']}`}>
         <Card variant="bordered" css={{ maxWidth: "400px" }}>
@@ -25,7 +28,7 @@ export const Register: NextPage = () => {
         <Card.Divider/>
         <Card.Header>
             <Text b>
-                Email
+                Username
             </Text>
         </Card.Header>
         <Input placeholder="Enter username..." css={{ color: "$blue300" }}
@@ -78,6 +81,8 @@ export const Register: NextPage = () => {
 
                     if (value.error) {
                         alert(value.error)
+                    } else {
+                        router.push('/dashboard')
                     }
                 } catch (err) {
                     alert(err)
