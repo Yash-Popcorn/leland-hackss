@@ -14,7 +14,7 @@ export const Register: NextPage = () => {
         <Card.Header>
         <img
           alt="nextui logo"
-          src="https://drive.google.com/file/d/1Rd3G-ouEeD-ibsJGn1Ua1jOX2Ma3YbJt/view?usp=sharing"
+          src="https://cdn.discordapp.com/attachments/859660582281936916/1021158764931453028/unknown.png"
           width="34px"
           height="34px"
         />
@@ -77,4 +77,4 @@ export const Register: NextPage = () => {
     </div>
 }
 
-export default Register 
+export default Register
