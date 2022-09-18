@@ -16,7 +16,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   const existing = await redis.hget(`user:${email}`, 'users');
   if (existing === password) {
     const id = randomUUID();
-    await redis.hset(`rid:${id}`, 'id', id);
+    await redis.hset(`rid:${id}`, 'id', email);
     setCookie('rid', id, { req, res });
     return res.send({});
   } else {

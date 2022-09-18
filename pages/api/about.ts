@@ -5,7 +5,7 @@ import Redis from 'ioredis';
 const redis = new Redis(9001);
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<{ error: string } | { email: string }>) {
-  if (req.method !== 'GET') {
+  if (req.method !== 'POST') {
     return res.status(400).json({ error: 'Method not allowed' });
   }
 

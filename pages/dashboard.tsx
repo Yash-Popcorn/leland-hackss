@@ -14,7 +14,7 @@ export const Dashboard: NextPage<dashboard_props> = ({id}) => {
 
     useEffect(() => {
         fetch(`/api/about`, {
-            method: "GET",
+            method: "POST",
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -33,7 +33,7 @@ export const Dashboard: NextPage<dashboard_props> = ({id}) => {
         })
     }, [])
 
-  return <div></div>;
+  return <div>Hello, {email}!</div>;
 };
 
 export const getServerSideProps: GetServerSideProps = async function ({ req, res }) {
