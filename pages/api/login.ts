@@ -1,6 +1,8 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next';
 import Redis from 'ioredis';
+import { setCookie } from 'cookies-next';
+import { randomUUID } from 'crypto';
 
 const redis = new Redis(9001);
 
@@ -13,8 +15,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
   const existing = await redis.hget(`user:${email}`, 'users');
   if (existing === password) {
+    const id = randomUUID();
+    await redis.hset(`rid:${id}`, 'id', id);
+    setCookie('rid', id, { req, res });
     return res.send({});
   } else {
-    return res.status(500).json({ error: 'Password or Username is not valid' })
+    return res.status(500).json({ error: 'Password or Username is not valid' });
   }
 }
