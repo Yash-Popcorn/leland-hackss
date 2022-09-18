@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import { Navbar, Text, Button } from "@nextui-org/react";
+import { Navbar, Text, Button, styled, Spacer } from "@nextui-org/react";
 import Link from 'next/link'
 
 /**
@@ -69,6 +69,10 @@ import Link from 'next/link'
     </div>
  * @returns 
  */
+
+const Box = styled("div", {
+  boxSizing: "border-box",
+});
 const Home: NextPage = () => {
   return (
       <>
@@ -89,6 +93,34 @@ const Home: NextPage = () => {
         </Navbar.Content>
           </Navbar>
         </main>
+        <Box css={{px: "$12", mt: "$8", "@xsMax": {px: "$10"}}}>
+    <Text h2 id="first">
+      <p>
+      What is the Sports Hub?
+      </p>
+      </Text>
+    <Spacer y={1} />
+    <Spacer y={1} />
+    <Text size="$lg" id="second">
+      The sports hub allows the client to communicate with others who are interested. The purpose of this tool is to provide communication with people of different interest and meet.
+    </Text>
+    <Spacer y={1} />
+    <Text size="$lg">
+      
+    </Text>
+    <Spacer y={1} />
+    <Text size="$lg">
+      
+    </Text>
+    <Text size="$lg">
+      
+    </Text>
+    <Spacer y={1} />
+    <Text size="$lg">
+      
+    </Text>
+    <Spacer y={1} />
+  </Box>
       </>
   )
 }

@@ -114,6 +114,7 @@
   align-items: center;
   text-align: center;
   height: 100%;
+  margin-top: 15%;
  }
 
 @media (max-width: 600px) {
@@ -135,5 +136,6 @@
     filter: invert(1);
   }
 }
+
 
 

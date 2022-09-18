@@ -3,11 +3,11 @@ import { NextPage } from "next";
 import { useState } from "react";
 import HomeStyles from '../styles/Home.module.css'
 
-export const Register: NextPage = () => {
+export const Login: NextPage = () => {
 
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
-    const [confirm_password, setConfirmPassword] = useState("")
+    //const [confirm_password, setConfirmPassword] = useState("")
 
     return <div className={`${HomeStyles['center']}`}>
         <Card variant="bordered" css={{ maxWidth: "400px" }}>
@@ -19,7 +19,7 @@ export const Register: NextPage = () => {
           height="24px"
         />
             <Text b>
-                Sign Up
+                Login
             </Text>
         </Card.Header>
         <Card.Divider/>
@@ -46,37 +46,17 @@ export const Register: NextPage = () => {
         >
         </Input.Password>
         <Card.Header>
-            <Text b>
-                Confirm Password
-            </Text>
-        </Card.Header>
-        <Input.Password placeholder="Confirm Password..." css={{ color: "$blue300" }}
-            onChange={(text) => {
-                setConfirmPassword(text.target.value)
-            }}
-        >
-        </Input.Password>
-        <Card.Header>
         <Button shadow css={{marginBottom: "60px"}}
             onClick={() => {
-                console.log(password, confirm_password, username)
-                fetch('/api/register', {
-                    method: "GET",
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                }).then(result => {
-                    return result.json()
-                }).then(json => {
-
-                })
+                console.log(password, username)
+                
             }}
         >
-            Sign Up
+            Login
         </Button>
         </Card.Header>
         </Card>
     </div>
 }
 
-export default Register 
+export default Login
