@@ -63,7 +63,7 @@ export const Register: NextPage = () => {
         <Button shadow css={{marginBottom: "60px"}}
             onPress={async () => {
                 console.log(password, confirm_password, username)
-                if (password !== confirm_password) alert("Password and Confirm Password are not the same!")
+                if (password !== confirm_password) return alert("Password and Confirm Password are not the same!")
 
                 try {
                     const result = await fetch('/api/register', {
