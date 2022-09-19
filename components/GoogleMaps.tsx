@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useRef } from 'react';
-import { v4 } from 'uuid';
 
-function GoogleMaps() {
+function GoogleMaps({ markers }: { markers: [string, string][] }) {
   const reference = useRef<HTMLDivElement | null>(null);
 
   useEffect(function initMap() {
@@ -14,10 +13,17 @@ function GoogleMaps() {
           center: uluru,
         });
 
-        const marker = new google.maps.Marker({
-          position: uluru,
-          map: map,
-        });
+        for (const marker of markers) {
+          const loc = marker[1].split(', ');
+          const markerInstance = new google.maps.Marker({
+            position: {
+              lat: parseFloat(loc[0]),
+              lng: parseFloat(loc[1])
+            },
+            map: map,
+          });
+          markerInstance
+        }
       }
     }, 100);
   }, []);
