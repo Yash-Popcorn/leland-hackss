@@ -2,9 +2,11 @@ lockfileVersion: 5.4
 
 specifiers:
   '@nextui-org/react': 1.0.0-beta.10
+  '@types/google.maps': ^3.50.1
   '@types/node': 18.7.18
   '@types/react': 18.0.20
   '@types/react-dom': 18.0.6
+  '@types/uuid': ^8.3.4
   cookies-next: ^2.1.1
   eslint: 8.23.1
   eslint-config-next: 12.3.0
@@ -13,6 +15,7 @@ specifiers:
   react: 18.2.0
   react-dom: 18.2.0
   typescript: 4.8.3
+  uuid: ^9.0.0
 
 dependencies:
   '@nextui-org/react': 1.0.0-beta.10_biqbaboplfbrettd7655fr4n2y
@@ -21,11 +24,14 @@ dependencies:
   next: 12.3.0_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  uuid: 9.0.0
 
 devDependencies:
+  '@types/google.maps': 3.50.1
   '@types/node': 18.7.18
   '@types/react': 18.0.20
   '@types/react-dom': 18.0.6
+  '@types/uuid': 8.3.4
   eslint: 8.23.1
   eslint-config-next: 12.3.0_irgkl5vooow2ydyo6aokmferha
   typescript: 4.8.3
@@ -1034,6 +1040,10 @@ packages:
     resolution: {integrity: sha512-XW/Aa8APYr6jSVVA1y/DEIZX0/GMKLEVekNG727R8cs56ahETkRAy/3DR7+fJyh7oUgGwNQaRfXCun0+KbWY7Q==}
     dev: false
 
+  /@types/google.maps/3.50.1:
+    resolution: {integrity: sha512-Wd3+cZwIk2DhDDosYCvXREvBfRAy9eXTf44YOcOKXhzN88AnLOCO+vrKH0N+QiP3SUtf7A6hn3yVJrMdXIqp1g==}
+    dev: true
+
   /@types/json5/0.0.29:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
     dev: true
@@ -1066,6 +1076,10 @@ packages:
 
   /@types/scheduler/0.16.2:
     resolution: {integrity: sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==}
+    dev: true
+
+  /@types/uuid/8.3.4:
+    resolution: {integrity: sha512-c/I8ZRb51j+pYGAu5CrFMRxqZ2ke4y2grEBO5AUjgSkSk+qT2Ea+OdWElz/OiMf5MNpn2b17kuVBwZLQJXzihw==}
     dev: true
 
   /@typescript-eslint/parser/5.37.0_irgkl5vooow2ydyo6aokmferha:
@@ -2717,6 +2731,11 @@ packages:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
       react: 18.2.0
+    dev: false
+
+  /uuid/9.0.0:
+    resolution: {integrity: sha512-MXcSTerfPa4uqyzStbRoTgt5XIe3x5+42+q1sDuy3R5MDk66URdLMOZe5aPX/SQd+kuYAh0FdP/pO28IkQyTeg==}
+    hasBin: true
     dev: false
 
   /which-boxed-primitive/1.0.2:

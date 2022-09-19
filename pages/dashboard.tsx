@@ -2,15 +2,14 @@ import { Button, Card, Dropdown, Input, Modal, Text, useModal } from '@nextui-or
 import { getCookie } from 'cookies-next';
 import { GetServerSideProps, NextPage } from 'next';
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
-import HomeStyles from '../styles/Home.module.css'
+import { useEffect, useState } from 'react';
+import GoogleMaps from '../components/GoogleMaps';
 
 interface dashboard_props {
-    id: string
+  id: string;
 }
 
-export const Dashboard: NextPage<dashboard_props> = ({id}) => {
-
+export const Dashboard: NextPage<dashboard_props> = ({ id }) => {
     const router = useRouter()
     const [email, setEmail] = useState('')
     const [visible, setVisible] = useState(false)
@@ -27,32 +26,34 @@ export const Dashboard: NextPage<dashboard_props> = ({id}) => {
         { key: "8", name: "Baseball" },
         { key: "9", name: "Fortnite" },
       ];
-    
-    useEffect(() => {
+      useEffect(() => {
         fetch(`/api/about`, {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                id
-            })
-        }).then(response => {
-            return response.json()
-        }).then((result: {error: string, email: string}) => {
-            if (result.error) {
-                alert(result.error)
-                router.push(`/`)
-            } else {
-                setEmail(result.email)
-            }
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            id,
+          }),
         })
-    }, [])
+          .then((response) => {
+            return response.json();
+          })
+          .then((result: { error: string; email: string }) => {
+            if (result.error) {
+              alert(result.error);
+              router.push(`/`);
+            } else {
+              setEmail(result.email);
+            }
+          });
+      }, []);
+    
     /**
      *   return <div>Hello, {email}!</div>;
      */
     return (
-        <React.Fragment>
+        <>
         <h1 id="first">
             <p>
             Hello, {email}
@@ -106,7 +107,8 @@ export const Dashboard: NextPage<dashboard_props> = ({id}) => {
             </Dropdown.Menu>
         </Dropdown>
       </Modal>
-        </React.Fragment>
+      <GoogleMaps />
+        </>
     )
 };
 

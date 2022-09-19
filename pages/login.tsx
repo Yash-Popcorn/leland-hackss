@@ -51,28 +51,22 @@ export const Login: NextPage = () => {
         <Button shadow css={{marginBottom: "60px"}}
             onPress={async () => {
                 console.log(password, username)
-                try {
-                    const result = await fetch('/api/login', {
-                        method: "POST",
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            email: username,
-                            password: password
-                        })
+                fetch('/api/login', {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: username,
+                        password: password
                     })
-                    const json_data = await result.json()
-                    const value: {error: string} = await json_data
-
-                    if (value.error) {
-                        alert(value.error)
+                }).then(response => response.json()).then((json_data) => {
+                    if (json_data.error) {
+                        alert(json_data.error)
                     } else {
                         router.push('/dashboard')
                     }
-                } catch (err) {
-                    alert(err)
-                }
+                })
             }}
         >
             Login
