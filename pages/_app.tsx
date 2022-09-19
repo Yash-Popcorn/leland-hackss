@@ -11,7 +11,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCk0V_HqBB7dM1qY5WlzDhnJfZKQ9zxgmw"
+        src={`https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_MAPS_API_KEY}`}
         strategy="afterInteractive"
       />
       <title>SportsHub</title>

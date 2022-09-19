@@ -2,7 +2,11 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+Before, doing anything, you need to [get the Google Maps key](https://developers.google.com/maps/get-started#quickstart).
+
+Next, paste the API key you got by following the steps into the `YOUR_API_KEY_HERE` part in the `.env` file.
+
+Now, run the development server:
 
 ```bash
 npm run dev
