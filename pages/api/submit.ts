@@ -28,6 +28,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       sport,
       user: match,
     }));
+    return res.send({});
   } else {
     res.status(500).json({
       error: 'Session ID points to nonexistent user',

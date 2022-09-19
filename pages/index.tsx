@@ -101,7 +101,7 @@ const Home: NextPage = () => {
       </Text>
     <Spacer y={1} />
     <Spacer y={1} />
-    <Text size="$lg" id="second">
+    <Text size="$lg" id="second" css={{ textAlign: 'center' }}>
       The sports hub allows the client to communicate with others who are interested. The purpose of this tool is to provide communication with people of different interest and meet.
     </Text>
     <Spacer y={1} />

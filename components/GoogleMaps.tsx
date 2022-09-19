@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef } from 'react';
 
-function GoogleMaps({ markers }: { markers: [string, string][] }) {
+function GoogleMaps({ markers, onClickMarker }: { markers: [string, string][], onClickMarker: any }) {
   const reference = useRef<HTMLDivElement | null>(null);
 
   useEffect(function initMap() {
@@ -22,7 +22,9 @@ function GoogleMaps({ markers }: { markers: [string, string][] }) {
             },
             map: map,
           });
-          markerInstance
+          markerInstance.addListener('click', () => {
+            onClickMarker(marker[0]);
+          });
         }
       }
     }, 100);
