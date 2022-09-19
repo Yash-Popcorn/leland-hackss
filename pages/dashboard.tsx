@@ -13,7 +13,8 @@ export const Dashboard: NextPage<dashboard_props> = ({ id }) => {
     const router = useRouter()
     const [email, setEmail] = useState('')
     const [visible, setVisible] = useState(false)
-    const [name, setName] = useState("Provide Location")
+    const [name, setName] = useState("Provide Sport")
+    const [locationName, setLocationName] = useState("Provide Location")
 
     const menuItems = [
         { key: "1", name: "Basketball" },
@@ -26,6 +27,14 @@ export const Dashboard: NextPage<dashboard_props> = ({ id }) => {
         { key: "8", name: "Baseball" },
         { key: "9", name: "Fortnite" },
       ];
+      const locationItems = [
+        { key: "1", name: "Palo Alto High School" },
+        { key: "2", name: "Wilcox High School" },
+        { key: "3", name: "Gun High School" },
+        { key: "4", name: "Harker" },
+        { key: "5", name: "Stratford High School" },
+      ];
+
       useEffect(() => {
         fetch(`/api/about`, {
           method: 'POST',
@@ -83,9 +92,23 @@ export const Dashboard: NextPage<dashboard_props> = ({ id }) => {
         <Modal.Header>
             Location
         </Modal.Header>
-        <Input bordered css={{scale: 0.9}} placeholder={"Provide a location..."}>
-
-        </Input>
+        <Dropdown>
+            <Dropdown.Button flat>{locationName}</Dropdown.Button>
+            <Dropdown.Menu items={locationItems} onSelectionChange={(name) => {
+                setLocationName(name['currentKey'])
+            }} selectionMode={"single"}>
+                {(item) => {
+                    const info = item as {name: string}
+                    return (
+                    <Dropdown.Item
+                        key={info.name}
+                    >
+                    {info.name}
+                  </Dropdown.Item>
+                  )
+                }}
+            </Dropdown.Menu>
+        </Dropdown>
         <Modal.Header>
             Sports
         </Modal.Header>
@@ -106,6 +129,28 @@ export const Dashboard: NextPage<dashboard_props> = ({ id }) => {
                 }}
             </Dropdown.Menu>
         </Dropdown>
+        <Button css={{}} onPress={() => {
+            fetch('/api/submit', {
+                method:"POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    location: locationName,
+                    sport: name
+                })
+            }).then(result => {
+                return result.json()
+            }).then((value: {error: string}) => {
+                if (value.error) {
+                    alert(value.error)
+                } else {
+                    setVisible(false)
+                }
+            })
+        }}>
+            Submit
+        </Button>
       </Modal>
       <GoogleMaps />
         </>
