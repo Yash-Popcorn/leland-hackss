@@ -1,4 +1,10 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## About
+
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). This project was written for the [LeLand Hacks Hackathon](https://lelandhacks.com/). Here is the team that created this project:
+
+- Frontend Engineer (**[@Yash-Popcorn](https://github.com/Yash-Popcorn)**)
+- Backend Engineer (**[@Yash-Singh1](https://github.com/Yash-Singh1)**)
+- Presentation (**[@EpicCodeWizard](https://github.com/EpicCodeWizard)**)
 
 ## Getting Started
 
